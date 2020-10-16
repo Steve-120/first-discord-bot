@@ -8,4 +8,8 @@ bot = commands.Bot(command_prefix='=')
 async def ping(ctx):
 	await ctx.send('pong')
 
+@bot.command()
+async def lenny(ctx):
+	await ctx.send('( ͡° ͜ʖ ͡°)')
+
 bot.run(os.environ['DISCORD_TOKEN'])
