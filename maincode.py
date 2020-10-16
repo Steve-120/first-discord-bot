@@ -4,18 +4,25 @@ import os
 import random
 
 bot = commands.Bot(command_prefix='=')
+bot.remove_command("help")
 
 @bot.command()
 async def ping(ctx):
-	await ctx.send('pong')
+	await ctx.send("pong")
 
 @bot.command()
 async def lenny(ctx):
-	await ctx.send('( ͡° ͜ʖ ͡°)')
+	await ctx.send("( ͡° ͜ʖ ͡°)")
 
 @bot.command()
 async def silog(ctx):
-	silog_list = ['Tapsilog', 'Longsilog', 'Tocilog', 'Bangsilog', 'Cornsilog', 'Hotsilog', 'Porksilog', 'Chicksilog', 'Sisigsilog']
+	silog_list = ["Tapsilog", "Longsilog", "Tocilog", "Bangsilog", "Cornsilog", "Hotsilog", "Porksilog", "Chicksilog", "Sisigsilog"]
 	await ctx.send(random.choice(silog_list))
 
-bot.run(os.environ['DISCORD_TOKEN'])
+@bot.event
+async def on_ready():
+
+	discord_status = discord.Activity(type = discord.ActivityType.watching, name = "out for your anti-PRC tweets")
+	await bot.change_presence(activity = discord_status)
+
+bot.run(os.environ["DISCORD_TOKEN"])
