@@ -22,7 +22,7 @@ async def silog(ctx):
 @bot.event
 async def on_ready():
 
-	discord_status = discord.Activity(type = discord.ActivityType.watching, name = "out for your anti-PRC tweets")
+	discord_status = discord.Activity(type = discord.ActivityType.watching, name = "if you be anti-PRC")
 	await bot.change_presence(activity = discord_status)
 
 bot.run(os.environ["DISCORD_TOKEN"])
