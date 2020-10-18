@@ -9,7 +9,7 @@ bot.remove_command("help")
 
 def potatilog_only(func):
 	async def wrapper(*args, **kwargs):
-		if args[0].guild == bot.get_guild(698910736117923951):
+		if args[0].guild == bot.get_guild(746364782269038692):
 			await func(*args, **kwargs)
 	return wrapper
 
@@ -19,9 +19,9 @@ async def shame_feet(message):
 	cleaned = "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
 	cleansor = {}
 	for inp, outp in zip(uncleaned, cleaned):
-		filterer[inp] = outp
+		cleansor[inp] = outp
 
-	cleaned_msg = ''.join([cleansor[x] if x in cleansor else x for x in ctx.message.content]).lower()
+	cleaned_msg = ''.join([cleansor[x] if x in cleansor else x for x in message.content]).lower()
 
 	if 'feet' in cleaned_msg:
 		await message.channel.send('feet fetish sucks')
@@ -48,7 +48,10 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
+	if message.author.bot: return
+	
 	await shame_feet(message)
+	await bot.process_commands(message)
 
 bot.run(os.environ["DISCORD_TOKEN"])
 
