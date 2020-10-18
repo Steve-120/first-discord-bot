@@ -13,7 +13,7 @@ def potatilog_only(func):
 			func(*args, **kwargs)
 	return wrapper
 
-@potatilog_only()
+@potatilog_only
 async def shame_feet(message):
 	uncleaned = "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ　ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ"
 	cleaned = "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
