@@ -10,7 +10,7 @@ bot.remove_command("help")
 def potatilog_only(func):
 	async def wrapper(*args, **kwargs):
 		if args[0].guild == bot.get_guild(698910736117923951):
-			func(*args, **kwargs)
+			await func(*args, **kwargs)
 	return wrapper
 
 @potatilog_only
@@ -48,7 +48,7 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-	shame_feet(message)
+	await shame_feet(message)
 
 bot.run(os.environ["DISCORD_TOKEN"])
 
