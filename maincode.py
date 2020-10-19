@@ -24,7 +24,7 @@ async def shame_feet(message):
 	cleaned_msg = ''.join([cleansor[x] if x in cleansor else x for x in message.content]).lower()
 	cleaned_msg = ''.join(cleaned_msg.split())
 
-	words = ["feet", "foot", "paa", "腳", "脚"]
+	words = ["feet", "foot", "paa", "腳", "脚", "足"]
 	for word in words:
 		if word in cleaned_msg:
 			await message.channel.send('foot fetish sucks')
