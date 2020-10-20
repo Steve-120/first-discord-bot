@@ -29,6 +29,16 @@ async def shame_feet(message):
 		if word in cleaned_msg:
 			await message.channel.send('foot fetish sucks')
 
+@potatilog_only
+async def inc_kek_counter(message):
+	if message.content.lower() != 'kek': return
+	with open('kekcounter.txt', 'r+') as file:
+		count = int(file.read())
+		count += 1
+		file.seek(0)
+		file.write(str(count) + '\n')
+		file.truncate()
+
 
 @bot.command()
 async def ping(ctx):
@@ -43,6 +53,12 @@ async def silog(ctx):
 	silog_list = ["Tapsilog", "Longsilog", "Tocilog", "Bangsilog", "Cornsilog", "Hotsilog", "Porksilog", "Chicksilog", "Sisigsilog"]
 	await ctx.send(random.choice(silog_list))
 
+@potatilog_only
+@bot.command()
+async def kekcount(ctx):
+	count = int(open('kekcounter.txt').read())
+	await ctx.send(count)
+
 @bot.event
 async def on_ready():
 
@@ -54,13 +70,14 @@ async def on_message(message):
 	if message.author.bot: return
 	
 	await shame_feet(message)
+	await inc_kek_counter(message)
+
 	await bot.process_commands(message)
 
 bot.run(os.environ["DISCORD_TOKEN"])
 
 '''
-TODO:
+dont put in commits:
 
-on_message 
-if detect "feet/foot": shame foot fetish
+kekcounter.txt
 '''
