@@ -2,10 +2,13 @@ import discord
 from discord.ext import commands
 import os
 import random
+import github
 
 bot = commands.Bot(command_prefix='=')
 bot.remove_command("help")
 
+github_account = github.Github('cc43a95bed740d552b6c52fc42ba636d25eec4c7') # Personal Access Token
+data_repo = github_account.get_user().get_repo('first-discord-bot-data')
 
 def potatilog_only(func):
 	async def wrapper(*args, **kwargs):
@@ -31,15 +34,14 @@ async def shame_feet(message):
 
 @potatilog_only
 async def kek_checker(message):
-	if message.content.lower() != 'kek': return
-	with open('kekcounter.txt', 'r+') as file:
-		count = int(file.read())
-		count += 1
-		await message.channel.send(count)
+	if message.content.lower() != "kek": return
+	kekcount_data = data_repo.get_contents("/kekcounter.txt")
+	kekcount = int(kekcount_data.decoded_content.decode())
+	kekcount += 1
 
-		file.seek(0)
-		file.write(str(count) + '\n')
-		file.truncate()
+	await message.channel.send(kekcount)
+	data_repo.update_file("kekcounter.txt", '', str(kekcount), kekcount_data.sha)
+
 
 
 @bot.command()
@@ -70,7 +72,7 @@ async def on_message(message):
 
 	await bot.process_commands(message)
 
-bot.run(os.environ["DISCORD_TOKEN"])
+bot.run("NzY2NjI3Mjg1OTg5MzI2ODgx.X4mHTA.suIGunUgh_ppDei6UliZ7jgWOPI")
 
 '''
 dont put in commits:
