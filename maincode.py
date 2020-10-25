@@ -30,11 +30,13 @@ async def shame_feet(message):
 			await message.channel.send('foot fetish sucks')
 
 @potatilog_only
-async def inc_kek_counter(message):
+async def kek_checker(message):
 	if message.content.lower() != 'kek': return
 	with open('kekcounter.txt', 'r+') as file:
 		count = int(file.read())
 		count += 1
+		await message.channel.send(count)
+
 		file.seek(0)
 		file.write(str(count) + '\n')
 		file.truncate()
@@ -53,12 +55,6 @@ async def silog(ctx):
 	silog_list = ["Tapsilog", "Longsilog", "Tocilog", "Bangsilog", "Cornsilog", "Hotsilog", "Porksilog", "Chicksilog", "Sisigsilog"]
 	await ctx.send(random.choice(silog_list))
 
-@potatilog_only
-@bot.command()
-async def kekcount(ctx):
-	count = int(open('kekcounter.txt').read())
-	await ctx.send(count)
-
 @bot.event
 async def on_ready():
 
@@ -70,7 +66,7 @@ async def on_message(message):
 	if message.author.bot: return
 	
 	await shame_feet(message)
-	await inc_kek_counter(message)
+	await kek_checker(message)
 
 	await bot.process_commands(message)
 
