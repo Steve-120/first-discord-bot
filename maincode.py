@@ -7,8 +7,15 @@ import github
 bot = commands.Bot(command_prefix='=')
 bot.remove_command("help")
 
+owner_id = 289600989810393102
 github_account = github.Github('cc43a95bed740d552b6c52fc42ba636d25eec4c7') # Personal Access Token
 data_repo = github_account.get_user().get_repo('first-discord-bot-data')
+
+def owner_only(func):
+	async def wrapper(ctx, *args, **kwargs):
+		if ctx.author.id == owner_id:
+			await func(ctx, *args, **kwargs)
+	return wrapper
 
 def potatilog_only(func):
 	async def wrapper(*args, **kwargs):
@@ -71,6 +78,14 @@ async def on_message(message):
 	await kek_checker(message)
 
 	await bot.process_commands(message)
+
+@owner_only
+async def eval(ctx, *args):
+	try:
+		answer = str(eval(args))
+		await ctx.send(answer)
+	except Exception as error_message:
+		await ctx.send(str(error_message))
 
 bot.run("NzY2NjI3Mjg1OTg5MzI2ODgx.X4mHTA.suIGunUgh_ppDei6UliZ7jgWOPI")
 
