@@ -76,7 +76,11 @@ async def kek_checker(message):
 
 @bot.command()
 async def ping(ctx):
-	await ctx.send("pong")
+	start_time = datetime.datetime.now()
+	flavor_text = choice(["Pong!", "🏓", "Noot noot!", "Her actual name is Mulan.", "～安。", "～等。"])
+	msg = await ctx.send(flavor_text)
+	ms_delay = int((datetime.datetime.now() - start_time).total_seconds() * 1000)
+	await msg.edit(content = flavor_text + f" `{ms_delay} ms`")
 
 @bot.command()
 async def lenny(ctx):
@@ -85,7 +89,7 @@ async def lenny(ctx):
 @bot.command()
 async def silog(ctx):
 	silog_list = ["Tapsilog", "Longsilog", "Tocilog", "Bangsilog", "Cornsilog", "Hotsilog", "Porksilog", "Chicksilog", "Sisigsilog"]
-	await ctx.send(random.choice(silog_list))
+	await ctx.send(choice(silog_list))
 
 @bot.event
 async def on_ready():
