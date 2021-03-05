@@ -1,7 +1,23 @@
 import discord
 from discord.ext import commands
+
 import os
-import random
+powmod = pow
+from math import *
+pow = powmod
+import datetime
+import time
+import re as regex
+
+from random import *
+import numpy as np
+import matplotlib as mpl
+from fractions import *
+from decimal import *
+from sympy import *
+from itertools import *
+
+from PIL import Image, ImageSequence, ImageDraw, ImageFilter
 import github
 import inspect
 
@@ -95,10 +111,8 @@ async def solve(ctx, *args):
 	except Exception as error_message:
 		await ctx.send(str(error_message))
 
-bot.run("NzY2NjI3Mjg1OTg5MzI2ODgx.X4mHTA.suIGunUgh_ppDei6UliZ7jgWOPI")
+from dotenv import load_dotenv
+load_dotenv()
+print("HI")
+bot.run(os.environ["DISCORD_TOKEN"])
 
-'''
-dont put in commits:
-
-kekcounter.txt
-'''

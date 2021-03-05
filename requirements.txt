@@ -1,2 +1,7 @@
 discord
 PyGithub
+numpy
+matplotlib
+sympy
+pillow
+python-dotenv
