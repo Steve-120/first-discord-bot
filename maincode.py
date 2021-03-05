@@ -113,6 +113,5 @@ async def solve(ctx, *args):
 
 from dotenv import load_dotenv
 load_dotenv()
-print("HI")
 bot.run(os.environ["DISCORD_TOKEN"])
 
