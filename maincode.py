@@ -22,7 +22,7 @@ import github
 import inspect
 
 bot = commands.Bot(command_prefix='=')
-bot.remove_command("help")
+# bot.remove_command("help")
 
 owner_id = 289600989810393102
 github_account = github.Github('cc43a95bed740d552b6c52fc42ba636d25eec4c7') # Personal Access Token
@@ -77,7 +77,7 @@ async def kek_checker(message):
 @bot.command()
 async def ping(ctx):
 	start_time = datetime.datetime.now()
-	flavor_text = choice(["Pong!", "🏓", "Noot noot!", "Her actual name is Mulan.", "～安。", "～等。". "～均。"])
+	flavor_text = choice(["Pong!", "🏓", "Noot noot!", "Her actual name is Mulan.", "～安。", "～等。", "～均。"])
 	msg = await ctx.send(flavor_text)
 	ms_delay = int((datetime.datetime.now() - start_time).total_seconds() * 1000)
 	await msg.edit(content = flavor_text + f" `{ms_delay} ms`")
