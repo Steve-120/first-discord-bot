@@ -77,7 +77,7 @@ async def kek_checker(message):
 @bot.command()
 async def ping(ctx):
 	start_time = datetime.datetime.now()
-	flavor_text = choice(["Pong!", "🏓", "Noot noot!", "Her actual name is Mulan.", "The correct surname is Xi, smh.", "～安。", "～等。", "～均。"])
+	flavor_text = choice(["Pong!", "🏓", "Noot noot!", "Her actual name is Mulan.", "The correct surname is Xi, smh.", "⁓安。", "⁓等。", "⁓均。", "⁓淇淋。"])
 	msg = await ctx.send(flavor_text)
 	ms_delay = int((datetime.datetime.now() - start_time).total_seconds() * 1000)
 	await msg.edit(content = flavor_text + f" `{ms_delay} ms`")
