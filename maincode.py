@@ -25,6 +25,8 @@ bot = commands.Bot(command_prefix='=')
 # bot.remove_command("help")
 
 owner_id = 289600989810393102
+mosc_id = 691168088829329418
+potatilog_id = 746364782269038692
 github_account = github.Github('cc43a95bed740d552b6c52fc42ba636d25eec4c7') # Personal Access Token
 data_repo = github_account.get_user().get_repo('first-discord-bot-data')
 
@@ -42,9 +44,10 @@ def owner_only(alternative = None):
 
 def potatilog_only(func):
 	async def wrapper(*args, **kwargs):
-		if args[0].guild == bot.get_guild(746364782269038692):
+		if args[0].guild == bot.get_guild(potatilog_id):
 			await func(*args, **kwargs)
 	return wrapper
+
 
 @potatilog_only
 async def shame_feet(message):
@@ -118,8 +121,6 @@ async def solve(ctx, *, args):
 		await ctx.send(answer)
 	except Exception as error_message:
 		await ctx.send(str(error_message))
-
-print(islocal)
 
 from dotenv import load_dotenv
 load_dotenv()
