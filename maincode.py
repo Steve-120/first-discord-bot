@@ -30,9 +30,9 @@ data_repo = github_account.get_user().get_repo('first-discord-bot-data')
 
 def owner_only(alternative = None):
 	def checker(func):
-		async def wrapper(ctx, *args):
+		async def wrapper(ctx, *args, **kwargs):
 			if ctx.author.id == owner_id:
-				await func(ctx, *args)
+				await func(ctx, *args, **kwargs)
 			else:
 				await ctx.send("you thought")
 		wrapper.__name__ = func.__name__
@@ -112,12 +112,14 @@ async def on_message(message):
 
 @bot.command()
 @owner_only()
-async def solve(ctx, *args):
+async def solve(ctx, *, args):
 	try:
 		answer = str(eval(ctx.message.content[7:]))
 		await ctx.send(answer)
 	except Exception as error_message:
 		await ctx.send(str(error_message))
+
+print(islocal)
 
 from dotenv import load_dotenv
 load_dotenv()
