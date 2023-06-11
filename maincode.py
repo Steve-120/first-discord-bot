@@ -27,7 +27,7 @@ bot = commands.Bot(command_prefix='=')
 owner_id = 289600989810393102
 mosc_id = 691168088829329418
 potatilog_id = 746364782269038692
-github_account = github.Github('cc43a95bed740d552b6c52fc42ba636d25eec4c7') # Personal Access Token
+github_account = github.Github('broken_token') # Personal Access Token
 data_repo = github_account.get_user().get_repo('first-discord-bot-data')
 
 def owner_only(alternative = None):
